@@ -12,9 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('service_requests', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('project_site_id')->constrained();
-            $table->foreignId('requested_by')->nullable()->constrained('users')->nullOnDelete();
+            $table->uuid('id')->primary();
+            $table->foreignUuid('project_site_id')->constrained();
+            $table->foreignUuid('requested_by')->nullable()->constrained('users')->nullOnDelete();
             $table->string('service_request_type')->index();
             $table->text('description')->nullable();
             $table->text('important_notes')->nullable();
@@ -27,7 +27,6 @@ return new class extends Migration
             $table->index(['priority', 'status']);
 
             $table->index('created_at');
-
         });
     }
 

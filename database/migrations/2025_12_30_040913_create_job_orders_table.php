@@ -12,9 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('job_orders', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('quotation_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('project_site_id')->constrained();
+            $table->uuid('id')->primary();
+            $table->foreignUuid('quotation_id')->constrained()->cascadeOnDelete();
+            $table->foreignUuid('project_site_id')->constrained();
             $table->string('job_order_number')->unique();
             $table->date('scheduled_date');
             $table->string('estimated_duration');

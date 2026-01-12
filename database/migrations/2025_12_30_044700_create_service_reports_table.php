@@ -12,10 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('service_reports', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('job_order_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('prepared_by')->constrained('users');
-            $table->foreignId('client')->constrained('users')->nullable();
+            $table->uuid('id')->primary();
+            $table->foreignUuid('job_order_id')->constrained()->cascadeOnDelete();
+            $table->foreignUuid('prepared_by')->constrained('users');
+            $table->foreignUuid('client')->constrained('users')->nullable();
             $table->date('service_date');
             $table->time('time_in');
             $table->time('time_out');

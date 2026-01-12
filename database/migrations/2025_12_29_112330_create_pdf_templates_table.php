@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('pdf_templates', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('legal_term_id')->constrained()->nullOnDelete();
+            $table->uuid('id')->primary();
+            $table->foreignUuid('legal_term_id')->constrained()->nullOnDelete();
             $table->string('title');
             $table->text('html_body');
             $table->timestamps();

@@ -12,9 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('project_sites_survey', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('service_request_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('surveyed_by')->constrained('users');
+            $table->uuid('id')->primary();
+            $table->foreignUuid('service_request_id')->constrained()->cascadeOnDelete();
+            $table->foreignUuid('surveyed_by')->constrained('users');
             $table->dateTime('survey_date');
             $table->text('findings');
             $table->text('recommendations');

@@ -12,9 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('legal_terms', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('created_by')->nullable()->constrained('users')->nullOnDelete();
-            $table->foreignId('updated_by')->nullable()->constrained('users')->nullOnDelete();
+            $table->uuid('id')->primary();
+            $table->foreignUuid('created_by')->nullable()->constrained('users')->nullOnDelete();
+            $table->foreignUuid('updated_by')->nullable()->constrained('users')->nullOnDelete();
             $table->string('title');
             $table->text('content');
             $table->integer('version')->default(1);

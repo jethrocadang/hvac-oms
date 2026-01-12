@@ -12,11 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('quotations', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('service_request_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('prepared_by')->constrained('users');
-            $table->foreignId('approved_by')->nullable()->constrained('users');
-            $table->foreignId('rejected_by')->nullable()->constrained('users');
+            $table->uuid('id')->primary();
+            $table->foreignUuid('service_request_id')->constrained()->cascadeOnDelete();
+            $table->foreignUuid('prepared_by')->constrained('users');
+            $table->foreignUuid('approved_by')->nullable()->constrained('users');
+            $table->foreignUuid('rejected_by')->nullable()->constrained('users');
             $table->date('approved_at')->nullable();
             $table->date('rejected_at')->nullable();
             $table->string('number')->unique();
