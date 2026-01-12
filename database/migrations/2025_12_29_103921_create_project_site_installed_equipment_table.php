@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('project_site_installed_equipment', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('project_site_id')->constrained()->cascadeOnDelete();
+            $table->uuid('id')->primary();
+            $table->foreignUuid('project_site_id')->constrained()->cascadeOnDelete();
             $table->string('brand_name')->nullable();
             $table->string('name')->nullable();
             $table->string('description')->nullable();
